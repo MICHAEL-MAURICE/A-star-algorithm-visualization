@@ -75,7 +75,6 @@ function removeFromArray(arr, elt) {
 // An educated guess of how far it is between two points
 function heuristic(a, b) {
   var d = dist(a.i, a.j, b.i, b.j);
-  // var d = abs(a.i - b.i) + abs(a.j - b.j);
   return d;
 }
 
@@ -164,7 +163,6 @@ function draw() {
       var neighbor = neighbors[i];
 
       // Valid next spot?
-      //هو هنا بيشوف هل انا حسبتها قبل كده ولا لا عشان لو محسبهاش يحسبها
       /*
       !closedSet.includes(neighbor)
       */
@@ -173,7 +171,6 @@ function draw() {
 
         // Is this a better path than before?
         var newPath = false;
-        //هنا عشان  يشوف لو ال ل اتحسبت برضوا في ال ابن ست
         if (openSet.includes(neighbor)) {
           if (tempG < neighbor.g) {
             neighbor.g = tempG;
@@ -218,7 +215,6 @@ function draw() {
   }
 
   // Find the path by working backwards
-  //بص هو هنا  انا  بحط  النقطه  الاخيره  في ال ست  الفاضيه  واقول طول ما لييه حته جاي منها خلاص يبقي تمام
   path = [];
   var temp = current;
   path.push(temp);
@@ -226,11 +222,6 @@ function draw() {
     path.push(temp.previous);
     temp = temp.previous;
   }
-
-  // for (var i = 0; i < path.length; i++) {
-  // path[i].show(color(0, 0, 255));
-  //}
-
   // Drawing path as continuous line
   noFill();
   stroke(255, 0, 200);
